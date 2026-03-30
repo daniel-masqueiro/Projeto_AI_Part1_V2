@@ -33,20 +33,21 @@ class PokemonGame:
     # --------------------------------
 
     def total_attack(self, attacker_types, defender_types):
-        melhor_efeito = 0
+        best_effect = 0
         for a_type in attacker_types:
-            efeito_combinado = 1
+            effect_combined = 1
             for d_type in defender_types:
+
                 resultado = list(self.prolog.query(f"attack({a_type}, {d_type}, Effect)"))
 
                 if resultado:
-                    valor = resultado[0]['Effect']
-                    efeito_combinado *= valor
+                    val = resultado[0]['Effect']
+                    effect_combined *= val
 
-            if efeito_combinado > melhor_efeito:
-                melhor_efeito = efeito_combinado
+            if effect_combined > best_effect:
+                best_effect = effect_combined
 
-        return melhor_efeito
+        return best_effect
 
     # --------------------------------
 
